@@ -1,0 +1,230 @@
+/* --- Layout --- */
+.santuario-container {
+  width: 100%;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  padding: 2rem;
+  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1); /* Transición más suave */
+}
+
+.guion-container {
+  padding-right: 2rem;
+  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1); /* Transición más suave */
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.altar-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1); /* Transición más suave */
+}
+
+/* --- Focus Mode Active --- */
+.santuario-container.focus-mode-active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 4rem);
+}
+
+.santuario-container.focus-mode-active .guion-container {
+  opacity: 0;
+  transform: translateX(-20px);
+  pointer-events: none;
+  display: none; /* Lo ocultamos completamente para que no afecte al layout de flexbox */
+}
+
+.santuario-container.focus-mode-active .altar-container {
+  height: auto; /* Dejamos que el contenido defina la altura */
+}
+
+.santuario-container.focus-mode-active .orbe-container {
+  transform: scale(1.05);
+  transition: transform 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+
+/* --- Typography --- */
+h1 {
+  font-family: var(--font-title);
+  color: var(--color-gold);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px var(--color-gold-glow);
+}
+
+.ritual-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: #b0b0b0;
+}
+
+/* --- Orbe de Trascendit --- */
+.orbe-container {
+  position: relative;
+  width: var(--orbe-size);
+  height: var(--orbe-size);
+  margin-bottom: 2rem;
+}
+
+.orbe-progress-ring {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: conic-gradient(var(--color-gold) 0%, transparent 0%);
+  border-radius: 50%;
+  transition: background 0.5s linear;
+}
+
+.orbe {
+  position: absolute;
+  top: 5%; left: 5%;
+  width: 90%; height: 90%;
+  background: radial-gradient(circle, #4d3c00, var(--color-background));
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: inset 0 0 40px rgba(0,0,0,0.8);
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 20px var(--color-gold-glow); }
+  50% { transform: scale(1.05); box-shadow: 0 0 30px var(--color-gold-glow); }
+  100% { transform: scale(1); box-shadow: 0 0 20px var(--color-gold-glow); }
+}
+
+.orbe.pulsing {
+    animation: pulse 4s infinite ease-in-out;
+}
+
+.orbe-timer {
+  font-family: var(--font-title);
+  font-size: 4.5rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  text-shadow: 0 0 10px var(--color-gold-glow);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.orbe-step-name {
+    font-size: 1rem;
+    color: var(--color-text);
+    padding: 0 1rem;
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+/* --- Controls --- */
+.main-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.main-controls button {
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+    background-color: transparent;
+    color: var(--color-text);
+    border: 2px solid #888;
+    border-radius: 50px;
+    padding: 0.8rem 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.main-controls button:hover {
+    border-color: var(--color-gold);
+    color: var(--color-gold);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.2);
+}
+
+.main-controls button#start-btn {
+    color: var(--color-gold);
+    border-color: var(--color-gold);
+    box-shadow: 0 0 15px var(--color-gold-glow);
+}
+
+.ritual-not-found {
+    text-align: center;
+}
+
+/* --- Ritual Finished Animation --- */
+
+.santuario-container.ritual-finished {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ocupa toda la altura de la ventana */
+  padding: 0; /* Resetea el padding para un centrado perfecto */
+}
+
+.santuario-container.ritual-finished .guion-container {
+  display: none; /* Oculta completamente el panel de texto */
+}
+
+.santuario-container.ritual-finished .altar-container {
+  height: auto; /* La altura se adapta al contenido */
+  flex-grow: 1; /* Permite que el contenedor crezca si es necesario */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes completionGlow {
+  0% { box-shadow: inset 0 0 40px rgba(0,0,0,0.8), 0 0 20px var(--color-gold-glow); }
+  50% { box-shadow: inset 0 0 20px rgba(0,0,0,0.5), 0 0 50px #fff, 0 0 25px var(--color-gold-glow); }
+  100% { box-shadow: inset 0 0 40px rgba(0,0,0,0.8), 0 0 20px var(--color-gold-glow); }
+}
+
+@keyframes textShimmer {
+  0% { text-shadow: 0 0 10px var(--color-gold-glow); }
+  50% { text-shadow: 0 0 20px #fff, 0 0 30px var(--color-gold-glow); }
+  100% { text-shadow: 0 0 10px var(--color-gold-glow); }
+}
+
+.ritual-finished .orbe {
+  animation: completionGlow 2.5s infinite ease-in-out;
+}
+
+.ritual-finished .orbe-timer {
+  display: none; /* Hide timer when finished */
+}
+
+.ritual-finished .orbe-step-name {
+  font-size: 1.5rem; /* Make text bigger */
+  font-family: var(--font-title);
+  color: var(--color-gold);
+  animation: textShimmer 2.5s infinite ease-in-out, fadeIn 0.6s ease-in-out;
+}
+
+.ritual-finished .orbe-progress-ring {
+  background: var(--color-gold); /* Make the ring solid gold */
+}
+
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+  .santuario-container {
+    grid-template-columns: 1fr;
+  }
+  .guion-container {
+    text-align: center;
+    padding: 0;
+  }
+}

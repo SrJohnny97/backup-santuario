@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "anclaje-de-poder",
+    "title": "Ritual Corporal: Anclaje del Poder",
+    "description": "Un ritual diseñado para mover la energía estancada del miedo y transformarla en poder personal, llevándote de un estado de contracción a uno de expansión y confianza.",
+    "videoFondo": "/video/anclaje-poder.mp4",
+    "audioAmbiente": "/audio/anclaje-poder.mp3",
+    "steps": [
+      {
+        "name": "Enraizamiento Activo",
+        "duration": 120,
+        "instruction": "De pie, con las rodillas ligeramente flexionadas. Comienza a dar pisotones suaves pero firmes contra el suelo. Imagina que con cada pisotón, liberas la energía del miedo hacia la tierra, que la transmuta."
+      },
+      {
+        "name": "Liberación del Plexo Solar",
+        "duration": 180,
+        "instruction": "Coloca una mano en tu pecho y la otra en tu abdomen. Comienza a dar golpecitos suaves y rítmicos (tapping) en ambas zonas mientras respiras profundamente. Con cada exhalación, emite un sonido 'AHHH' profundo y audible."
+      },
+      {
+        "name": "Postura de Poder",
+        "duration": 300,
+        "instruction": "Separa las piernas al ancho de los hombros, pon las manos en las caderas, saca el pecho y levanta ligeramente la barbilla. Respira profundo y siente cómo el espacio que ocupas se expande."
+      }
+    ]
+  },
+  {
+    "slug": "postura-de-receptividad",
+    "title": "Ritual Corporal: Postura de la Receptividad",
+    "description": "Un ritual para enseñarle a nuestro cuerpo el lenguaje de la abundancia, que es la apertura y la receptividad, y cultivar la sensación física de estar abierto a recibir.",
+    "videoFondo": "/video/postura-receptividad.mp4",
+    "audioAmbiente": "/audio/postura-receptividad.mp3",
+    "steps": [
+      {
+        "name": "Expansión del Corazón",
+        "duration": 180,
+        "instruction": "De pie, entrelaza tus manos detrás de la espalda. Estira los brazos hacia atrás y hacia abajo, abriendo el pecho y los hombros. Siente cómo se expande tu centro cardíaco."
+      },
+      {
+        "name": "Respiración de la Abundancia",
+        "duration": 240,
+        "instruction": "Sentado o de pie, coloca tus manos sobre tu regazo con las palmas hacia arriba. Inhala profundamente imaginando que absorbes una energía dorada de oportunidad y abundancia del aire."
+      },
+      {
+        "name": "Manos Abiertas",
+        "duration": 180,
+        "instruction": "Permanece con tus manos abiertas, palmas hacia el cielo. Simplemente siente la energía en tus palmas. Estás físicamente declarando al universo: 'Estoy listo/a para recibir'."
+      }
+    ]
+  }
+]

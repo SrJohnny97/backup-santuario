@@ -1,0 +1,96 @@
+/* Main container for the steps list */
+.ritual-steps-container {
+  margin-top: 2rem;
+}
+
+/* Unordered list reset */
+.ritual-steps-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+}
+
+/* Individual step item styling */
+.ritual-step-item {
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother transition */
+}
+
+/* Header section for each step */
+.step-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Step number circle */
+.step-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgba(255, 215, 0, 0.1);
+  color: #FFD700;
+  font-weight: bold;
+  font-size: 1rem;
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+/* Step name title */
+.step-name {
+  font-family: 'Philosopher', sans-serif;
+  color: #FFFFFF;
+  font-size: 1.2rem;
+  font-weight: bold;
+  flex-grow: 1; /* Take up available space */
+}
+
+/* Container for duration icon and text */
+.step-duration-container {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 0.3rem 0.6rem;
+  border-radius: 15px;
+  font-size: 0.9rem;
+}
+
+.step-duration-icon {
+  color: #FFD700;
+}
+
+/* Instruction text */
+.step-instruction {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  line-height: 1.6;
+  padding-left: 46px; /* Align with step name */
+  margin: 0;
+}
+
+/* --- Active Step Highlighting --- */
+.ritual-step-item.active-step {
+  background-color: rgba(255, 215, 0, 0.15);
+  border-color: #FFD700;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 15px rgba(255, 215, 0, 0.2);
+}
+
+.ritual-step-item.active-step .step-number {
+  background-color: #FFD700;
+  color: #000;
+}
+
+.ritual-step-item.active-step .step-name {
+  color: #FFD700;
+}
