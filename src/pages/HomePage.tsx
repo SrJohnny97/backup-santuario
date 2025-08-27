@@ -1,4 +1,4 @@
-import { useState } from 'react';
+
 import RitualCard from '../components/RitualCard'; // New import
 import type { Ritual } from '../types';
 import CosmicCanvas from '../components/CosmicCanvas';
