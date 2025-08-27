@@ -371,3 +371,24 @@ La solución final y correcta fue:
 
 *   **Feedback del Usuario:** La mejora es notable, pero el resultado aún no tiene el "alma" o el factor "wow" deseado. El fondo animado, aunque es una mejora, puede desentonar con la paleta de colores oscura de los rituales y no se percibe suficientemente "premium" o "mágico".
 *   **Siguiente Objetivo:** Investigar e implementar una solución más avanzada, posiblemente utilizando JavaScript, para crear un fondo que sea verdaderamente impresionante, interactivo y que se sienta como un santuario digital. La meta es lograr un impacto visual inmediato que invite al usuario a quedarse y explorar.
+
+**(esto se implementó, pero falta acomodarlo dentro de este mismo archivo.)**
+Logros hasta ahora:
+
+Fondo: Eliminado el gradiente animado, implementado el lienzo estelar interactivo (CosmicCanvas.tsx) con estrellas sutiles, titilantes, efecto "burbuja" en escritorio, y una nebulosa CSS. El color dorado de las partículas se actualizó a #ffc371.
+Botón de Pausa: Eliminado por solicitud del usuario para una interfaz más limpia.
+Cartas (Fase 1 - Base CSS):
+Se estableció un espacio 3D (perspective) en la cuadrícula de rituales.
+Se creó el componente RitualCard.tsx para encapsular la lógica de las cartas y se refactorizó HomePage.tsx para usarlo.
+Se actualizó la variable --color-gold en global.css a #ffc371.
+Se mejoró el efecto hover de las cartas con un "levantamiento y brillo" más pronunciado.
+Pendiente (para el efecto de inclinación 3D):
+
+La última acción fue cancelada, por lo que falta aplicar el CSS final para el efecto de inclinación 3D.
+
+Aplicar CSS Final para Inclinación 3D:
+Archivo: santuario-app/src/styles/HomePage.css
+Cambios:
+Añadir transform-style: preserve-3d; a .ritual-card.
+Ajustar la propiedad transition en .ritual-card para una rotación más rápida (transform 0.2s ease-out).
+Modificar la propiedad transform en .ritual-card:hover para usar las variables CSS: rotateX(var(--rotateX, 0deg)) rotateY(var(--rotateY, 0deg)).

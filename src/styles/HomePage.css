@@ -70,6 +70,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2rem;
+  perspective: 1000px; /* Create 3D space for children */
 }
 
 /* --- Frosted Glass Cards (Base and Grid) --- */
@@ -77,19 +78,21 @@
   background-color: rgba(26, 26, 58, 0.25);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px); /* For Safari */
-  border: 1px solid rgba(255, 215, 0, 0.2);
+  border: 1px solid rgba(255, 195, 113, 0.2);
   padding: 2rem;
   border-radius: 15px;
   text-align: left;
   text-decoration: none;
   color: var(--color-text);
-  transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+  transition: transform 0.4s ease, border-color 0.4s ease, background-color 0.4s ease, box-shadow 0.4s ease;
+  will-change: transform;
 }
 
 .ritual-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(255, 215, 0, 0.5);
-  background-color: rgba(26, 26, 58, 0.4);
+  transform: translateY(-10px) scale(1.03);
+  border-color: rgba(255, 195, 113, 0.6);
+  background-color: rgba(26, 26, 58, 0.5);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 195, 113, 0.3);
 }
 
 .ritual-card-title {

@@ -4,8 +4,8 @@
   --font-body: 'Lato', sans-serif;
   --color-background: #0a0a1a;
   --color-text: #e0e0e0;
-  --color-gold: #ffd700;
-  --color-gold-glow: rgba(255, 215, 0, 0.5);
+  --color-gold: #ffc371; /* Updated to the correct luminous gold */
+  --color-gold-glow: rgba(255, 195, 113, 0.5);
   --color-dark-gold: #b39700;
   --orbe-size: 300px;
 }
@@ -16,19 +16,11 @@
   box-sizing: border-box;
 }
 
-@keyframes moveCosmos {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
 body {
   font-family: var(--font-body);
   color: var(--color-text);
   min-height: 100vh;
-  background: linear-gradient(225deg, #0a0a1a, #1a1a3a, #2a1a3a, #3a2a5a, #0a0a1a);
-  background-size: 400% 400%;
-  animation: moveCosmos 40s ease infinite;
+  background-color: var(--color-background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
