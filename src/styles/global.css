@@ -16,12 +16,19 @@
   box-sizing: border-box;
 }
 
+@keyframes moveCosmos {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 body {
   font-family: var(--font-body);
-  background-color: var(--color-background);
   color: var(--color-text);
   min-height: 100vh;
-  background-image: radial-gradient(circle, #1a1a3a, #0a0a1a);
+  background: linear-gradient(225deg, #0a0a1a, #1a1a3a, #2a1a3a, #3a2a5a, #0a0a1a);
+  background-size: 400% 400%;
+  animation: moveCosmos 40s ease infinite;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -29,4 +36,5 @@ body {
 /* Special class to make body transparent only for the Ritual Page */
 body.ritual-page-active {
   background: transparent;
+  animation: none;
 }

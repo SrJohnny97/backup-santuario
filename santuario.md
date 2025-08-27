@@ -24,7 +24,7 @@ El objetivo es crear una experiencia web premium e inmersiva para que los usuari
 
 - **Fase 1: MVP Funcional:** **(COMPLETADO)**
 - **Fase 2: Refinamiento Premium:** Elevar la experiencia de usuario a un nivel profesional y memorable. **(COMPLETADO)**
-- **Fase 3: Rediseño Premium de la Página de Inicio:** Reconstruir la página de selección de rituales para una experiencia de usuario superior. **(PENDIENTE)**
+- **Fase 3: Rediseño Premium de la Página de Inicio:** Reconstruir la página de selección de rituales para una experiencia de usuario superior. **(EN CURSO)**
 - **Fase 4: Expansión:** Expandir la aplicación con características adicionales.
 
 ## 4. Bitácora de Incidentes Clave
@@ -195,6 +195,7 @@ Se ha iniciado el trabajo sobre los puntos de mejora detectados en la Fase 2.5, 
         *   **`RitualPage.css`:** Se aseguró que el contenedor principal del ritual (`santuario-container`) tuviera `position: relative` para apilarse correctamente sobre el video.
         *   **`RitualPage.tsx`:** Se reestructuró el componente para que `VideoBackground` sea un hermano del contenido principal, no un hijo, permitiendo que `position: fixed` funcione correctamente anclado a la ventana del navegador.
     *   **Resultado:** Se eliminó por completo el glitch, logrando un scroll perfectamente fluido en todos los dispositivos sin afectar la estética visual (incluyendo la capa de oscuridad del video).
+
 ---
 
 ## 8. Guía para Desarrolladores: Flujo de Trabajo con Git y Despliegue
@@ -317,25 +318,56 @@ La solución final y correcta fue:
 
 ---
 
-## 10. Fase 3: Rediseño Premium de la Página de Inicio (El Altar del Iniciado)
+## 10. Post-Mortem de Incidente Crítico: Errores de Layout en Cascada
 
-*   **Estado:** PENDIENTE
+Tras la implementación de la Fase 2.5, se intentó corregir un bug menor de layout que desencadenó una serie de errores en cascada debido a un acoplamiento de estilos no detectado entre componentes. Esta sección sirve como bitácora de dicho incidente para aprendizaje futuro.
+
+*   **Incidente Original:** El orbe de "Ritual Completado" no se centraba correctamente en móviles.
+*   **Primer Intento de Arreglo:** Se modificaron los estilos de la clase `.ritual-finished` para forzar el centrado con `display: flex`.
+*   **Efecto Secundario #1 (Bug Descubierto):** El arreglo anterior expuso un bug latente: el "salto" del video de fondo al hacer scroll en móviles.
+    *   *Causa Raíz:* El componente `VideoBackground` usaba `position: fixed`, pero estaba anidado dentro de un contenedor que usaba `transform`, lo que rompía su anclaje al viewport y lo anclaba al contenedor padre.
+*   **Segundo Intento de Arreglo (Arquitectónico):** Para solucionar el "salto" del video, se aplicó una re-arquitectura:
+    1.  Se movió `VideoBackground` fuera de su contenedor en `RitualPage.tsx`.
+    2.  Se hizo transparente el fondo del `body` en `global.css` para que el video (ahora en la capa inferior) fuera visible.
+*   **Efecto Secundario #2 (Bug Introducido):** La `HomePage` (que no tiene video) apareció con un fondo blanco, ya que ahora el `body` era transparente.
+*   **Tercer Intento de Arreglo (Parche):** Se intentó arreglar la `HomePage` añadiéndole el fondo oscuro directamente a su contenedor.
+*   **Efecto Secundario #3 (Bugs Introducidos):** Este parche causó dos nuevos problemas:
+    1.  El fondo de la `HomePage` se mostraba como una "franja vertical" porque el `display: flex` del `body` limitaba su ancho.
+    2.  El contenido de la `HomePage` se desalineó verticalmente.
+*   **Efecto Secundario #4 (Bug Catastrófico):** Al intentar arreglar la "franja vertical" eliminando el `display: flex` del `body`, se rompió por completo la maquetación de la `RitualPage`, que dependía de esos estilos globales para centrarse.
+
+### Resolución Arquitectónica Definitiva
+
+Se determinó que la causa raíz de toda la cascada de errores era la **violación del principio de independencia de componentes**, específicamente, el uso de estilos de maquetación (`display: flex`) en una etiqueta global como `body`.
+
+La solución final y correcta fue:
+
+1.  **Limpieza de `global.css`:** Se eliminó por completo `display: flex` y cualquier otra regla de maquetación del `body`. Se restauró el fondo oscuro como el estilo por defecto de la aplicación.
+2.  **Layouts Encapsulados:** Se refactorizaron **ambas** páginas (`HomePage` y `RitualPage`) para que cada una gestionara su propia maquetación de centrado y altura, sin depender del `body`.
+3.  **Override Controlado:** Para el caso especial de la `RitualPage` (que necesita un fondo transparente), se implementó un hook `useEffect` que añade una clase `ritual-page-active` al `body` al montarse, y la retira al desmontarse. Una regla específica en `global.css` (`body.ritual-page-active`) aplica la transparencia únicamente cuando es necesario.
+
+*   **Lección Aprendida:** Los estilos de maquetación (posicionamiento, flexbox, grid) deben ser responsabilidad de los componentes o contenedores de página, no de etiquetas globales como `body` o `html`. El scope global debe reservarse para estilos base (tipografía, colores, etc.), y las excepciones deben manejarse con clases específicas y controladas.
+
+---
+
+## 11. Fase 3: Rediseño Premium de la Página de Inicio (El Altar del Iniciado)
+
+*   **Estado:** EN CURSO
 *   **Objetivo:** Transformar la página de inicio de una simple lista a una experiencia de usuario premium, atractiva y que comunique el valor del santuario.
 
 ### Principio Clave de Arquitectura
 
 *   **INDEPENDENCIA TOTAL DE COMPONENTES:** Esta es la regla fundamental para esta fase. Los estilos y la estructura de la `HomePage` deben ser completamente autónomos y no deben, bajo ninguna circunstancia, afectar o ser afectados por los estilos de la `RitualPage` o los estilos globales de maquetación.
 
-### Diseño Propuesto: "El Altar del Iniciado"
+### Implementación (Iteración 1): El Cosmos Viviente
 
-1.  **Sección Superior: El Ritual de la Semana:**
-    *   **Concepto:** El ritual más reciente se presentará en un formato destacado y protagónico en la parte superior de la página.
-    *   **Implementación:** Se creará un componente de "tarjeta destacada" de mayor tamaño, con tipografía más grande y posiblemente un borde o brillo sutil para indicar que es el contenido nuevo. Se asumirá que el último ritual en el archivo `rituales.json` es el más nuevo.
+*   **Objetivo:** Añadir una atmósfera más "mágica" y "viva" a la página de inicio.
+*   **Pasos Técnicos:**
+    1.  **Fondo Cósmico Animado:** Se reemplazó el fondo estático del `body` por un gradiente CSS animado de gran tamaño para simular una nebulosa en lento movimiento.
+    2.  **Tarjetas de Cristal Esmerilado:** Se rediseñaron las tarjetas de los rituales con un fondo semi-transparente y un filtro `backdrop-filter: blur(10px)` para crear un efecto de profundidad, permitiendo que el fondo animado se vea a través de ellas.
+    3.  **Jerarquía Visual:** Se ajustó la maquetación para destacar el ritual más reciente y presentar los demás en una cuadrícula responsiva.
 
-2.  **Sección Inferior: La Biblioteca de Rituales:**
-    *   **Concepto:** El resto de los rituales se presentarán en una cuadrícula (grid) moderna y responsiva.
-    *   **Implementación:** Se reemplazará la lista vertical actual por un layout de `display: grid` que se ajuste automáticamente al tamaño de la pantalla (ej. 2-3 columnas en escritorio, 1 en móvil).
+### Feedback (Iteración 1) y Siguientes Pasos
 
-3.  **Mejoras de "Premium Feel":**
-    *   **Micro-interacciones:** Se refinarán los efectos `hover` de todas las tarjetas para que tengan transiciones más suaves y un aspecto más elegante.
-    *   **Jerarquía Visual:** Se realizará un ajuste general de espaciados y tipografía para asegurar una apariencia limpia y profesional.
+*   **Feedback del Usuario:** La mejora es notable, pero el resultado aún no tiene el "alma" o el factor "wow" deseado. El fondo animado, aunque es una mejora, puede desentonar con la paleta de colores oscura de los rituales y no se percibe suficientemente "premium" o "mágico".
+*   **Siguiente Objetivo:** Investigar e implementar una solución más avanzada, posiblemente utilizando JavaScript, para crear un fondo que sea verdaderamente impresionante, interactivo y que se sienta como un santuario digital. La meta es lograr un impacto visual inmediato que invite al usuario a quedarse y explorar.
