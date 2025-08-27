@@ -372,23 +372,24 @@ La solución final y correcta fue:
 *   **Feedback del Usuario:** La mejora es notable, pero el resultado aún no tiene el "alma" o el factor "wow" deseado. El fondo animado, aunque es una mejora, puede desentonar con la paleta de colores oscura de los rituales y no se percibe suficientemente "premium" o "mágico".
 *   **Siguiente Objetivo:** Investigar e implementar una solución más avanzada, posiblemente utilizando JavaScript, para crear un fondo que sea verdaderamente impresionante, interactivo y que se sienta como un santuario digital. La meta es lograr un impacto visual inmediato que invite al usuario a quedarse y explorar.
 
-**(esto se implementó, pero falta acomodarlo dentro de este mismo archivo.)**
-Logros hasta ahora:
+### Implementación (Iteración 2): El Santuario Interactivo
 
-Fondo: Eliminado el gradiente animado, implementado el lienzo estelar interactivo (CosmicCanvas.tsx) con estrellas sutiles, titilantes, efecto "burbuja" en escritorio, y una nebulosa CSS. El color dorado de las partículas se actualizó a #ffc371.
-Botón de Pausa: Eliminado por solicitud del usuario para una interfaz más limpia.
-Cartas (Fase 1 - Base CSS):
-Se estableció un espacio 3D (perspective) en la cuadrícula de rituales.
-Se creó el componente RitualCard.tsx para encapsular la lógica de las cartas y se refactorizó HomePage.tsx para usarlo.
-Se actualizó la variable --color-gold en global.css a #ffc371.
-Se mejoró el efecto hover de las cartas con un "levantamiento y brillo" más pronunciado.
-Pendiente (para el efecto de inclinación 3D):
+*   **Objetivo:** Dar vida a la página de inicio, convirtiendo las tarjetas de rituales en objetos 3D interactivos que responden al movimiento del usuario, mejorando la sensación "premium" y el factor "wow".
+*   **Estado:** **(COMPLETADO)**
 
-La última acción fue cancelada, por lo que falta aplicar el CSS final para el efecto de inclinación 3D.
+**Pasos Técnicos:**
 
-Aplicar CSS Final para Inclinación 3D:
-Archivo: santuario-app/src/styles/HomePage.css
-Cambios:
-Añadir transform-style: preserve-3d; a .ritual-card.
-Ajustar la propiedad transition en .ritual-card para una rotación más rápida (transform 0.2s ease-out).
-Modificar la propiedad transform en .ritual-card:hover para usar las variables CSS: rotateX(var(--rotateX, 0deg)) rotateY(var(--rotateY, 0deg)).
+1.  **Lienzo Cósmico Mejorado:** Se reemplazó el fondo animado por un componente de canvas (`CosmicCanvas.tsx`) que renderiza un campo de estrellas titilantes con un efecto de nebulosa CSS, creando una atmósfera más sutil y mágica.
+2.  **Abstracción de Componente:** La lógica y estructura de cada tarjeta se encapsuló en su propio componente, `RitualCard.tsx`, para mejorar la reutilización y mantenibilidad del código.
+3.  **Implementación de Lógica 3D (JavaScript):**
+    *   Se añadió un manejador de eventos `onMouseMove` directamente en el componente `RitualCard.tsx`.
+    *   Este script calcula la posición del cursor del usuario relativa a la tarjeta y la traduce a valores de rotación en los ejes X e Y.
+    *   Los valores de rotación se aplican dinámicamente al estilo de la tarjeta a través de variables CSS (`--rotateX`, `--rotateY`), pasando la información del estado de React al CSS.
+    *   Se implementó un manejador `onMouseLeave` para resetear la rotación cuando el cursor abandona la tarjeta, asegurando una transición de vuelta suave.
+4.  **Activación del Efecto 3D (CSS):**
+    *   Se estableció un espacio 3D en el contenedor de la cuadrícula (`.ritual-grid`) usando la propiedad `perspective`.
+    *   En la hoja de estilos `HomePage.css`, se añadió `transform-style: preserve-3d` a la clase `.ritual-card` para permitir que sea manipulada en un entorno 3D.
+    *   Se actualizó el estado `:hover` de la tarjeta para que utilice las variables `--rotateX` y `--rotateY` y aplique la rotación 3D, combinándola con los efectos de "levantamiento" y escala ya existentes.
+    *   Se ajustó la propiedad `transition` para una respuesta de rotación más rápida y fluida (`transform 0.2s ease-out`).
+
+*   **Resultado:** Las tarjetas ahora se inclinan y giran siguiendo el movimiento del ratón, creando una experiencia táctil y visualmente atractiva que eleva la calidad percibida de la interfaz.

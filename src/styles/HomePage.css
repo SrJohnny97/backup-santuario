@@ -84,12 +84,13 @@
   text-align: left;
   text-decoration: none;
   color: var(--color-text);
-  transition: transform 0.4s ease, border-color 0.4s ease, background-color 0.4s ease, box-shadow 0.4s ease;
+  transition: transform 0.2s ease-out, border-color 0.4s ease, background-color 0.4s ease, box-shadow 0.4s ease;
   will-change: transform;
+  transform-style: preserve-3d;
 }
 
 .ritual-card:hover {
-  transform: translateY(-10px) scale(1.03);
+  transform: translateY(-10px) scale(1.03) rotateX(var(--rotateX, 0deg)) rotateY(var(--rotateY, 0deg));
   border-color: rgba(255, 195, 113, 0.6);
   background-color: rgba(26, 26, 58, 0.5);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 195, 113, 0.3);
