@@ -38,15 +38,25 @@ const RitualCard = ({ ritual, isFeatured }: RitualCardProps) => {
     ? "ritual-card featured-ritual-card"
     : "ritual-card";
 
+  // Estilo en línea para la prueba de depuración
+  const cardStyle = {
+    background: `
+      radial-gradient(ellipse at 10% 20%, rgba(255, 215, 0, 0.05) 0%, transparent 40%),
+      radial-gradient(ellipse at 90% 80%, rgba(255, 195, 113, 0.05) 0%, transparent 50%),
+      #121218
+    `
+  };
+
   return (
     <Link
       ref={cardRef}
       to={`/ritual/${ritual.slug}`}
       className={cardClassName}
+      style={cardStyle}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      <h3 className="ritual-card-title">{ritual.title}</h3>
+      <h3 class="ritual-card-title">{ritual.title}</h3>
       <p className="ritual-card-description">{ritual.description}</p>
     </Link>
   );

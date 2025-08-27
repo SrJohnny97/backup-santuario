@@ -75,16 +75,16 @@
 
 /* --- Frosted Glass Cards (Base and Grid) --- */
 .ritual-card {
-  background-color: rgba(26, 26, 58, 0.25);
+  /* El fondo se controla con un estilo en línea en RitualCard.tsx para evitar problemas de caché de Vite */
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px); /* For Safari */
+  -webkit-backdrop-filter: blur(10px);
   border: 2px solid rgba(255, 195, 113, 0.5);
   padding: 2rem;
   border-radius: 15px;
   text-align: left;
   text-decoration: none;
   color: var(--color-text);
-  transition: transform 0.2s ease-out, border-color 0.4s ease, background-color 0.4s ease, box-shadow 0.4s ease;
+  transition: transform 0.2s ease-out, border-color 0.4s ease, box-shadow 0.4s ease;
   will-change: transform;
   transform-style: preserve-3d;
 }
@@ -92,7 +92,6 @@
 .ritual-card:hover {
   transform: translateY(-10px) scale(1.03) rotateX(var(--rotateX, 0deg)) rotateY(var(--rotateY, 0deg));
   border-color: rgba(255, 195, 113, 0.6);
-  background-color: rgba(45, 30, 60, 0.6);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 195, 113, 0.3);
 }
 
