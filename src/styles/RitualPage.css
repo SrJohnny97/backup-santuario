@@ -2,12 +2,16 @@
 .santuario-container {
   width: 100%;
   max-width: 1200px;
+  margin: 0 auto; /* Center horizontally */
+  min-height: 100vh; /* Take full viewport height */
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
-  align-items: center;
+  align-items: center; /* Vertically center grid items */
   padding: 2rem;
-  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1); /* Transición más suave */
+  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  background-color: transparent;
 }
 
 .guion-container {
