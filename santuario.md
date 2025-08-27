@@ -392,4 +392,20 @@ La solución final y correcta fue:
     *   Se actualizó el estado `:hover` de la tarjeta para que utilice las variables `--rotateX` y `--rotateY` y aplique la rotación 3D, combinándola con los efectos de "levantamiento" y escala ya existentes.
     *   Se ajustó la propiedad `transition` para una respuesta de rotación más rápida y fluida (`transform 0.2s ease-out`).
 
-*   **Resultado:** Las tarjetas ahora se inclinan y giran siguiendo el movimiento del ratón, creando una experiencia táctil y visualmente atractiva que eleva la calidad percibida de la interfaz.
+*   **Resultado:** Las tarjetas ahora se inclinan y giran siguiendo el movimiento del ratón, creando una experiencia táctil y visualmente atractiva que eleva la calidad percibida de la interfaz.### Implementación (Iteración 3): Ajuste de Visibilidad y Claridad
+
+*   **Objetivo:** Mejorar la legibilidad y el impacto visual de las tarjetas de rituales en la biblioteca, especialmente en dispositivos móviles donde el borde era poco visible.
+*   **Estado:** **(Parcialmente Completado)**
+
+**Pasos Técnicos:**
+
+1.  **Análisis y Diagnóstico:** Se detectó que el borde de las tarjetas de la biblioteca (`ritual-card`) era demasiado sutil (`1px` y muy transparente), causando que se confundiera con el fondo de la página. Múltiples intentos de implementar un borde animado con técnicas avanzadas de CSS (`@property`, `conic-gradient`) fallaron, indicando posibles problemas de compatibilidad o especificidad.
+2.  **Resolución (Punto 1 - Borde):** Tras un proceso de depuración, se optó por la solución más robusta y directa:
+    *   Se modificó la regla de CSS para `.ritual-card` en `src/styles/HomePage.css`.
+    *   Se aumentó el grosor del borde a `2px` y su opacidad a `0.5` (`rgba(255, 195, 113, 0.5)`).
+    *   Este cambio simple y efectivo asegura que el borde sea claramente visible en todos los dispositivos sin introducir animaciones complejas. **(COMPLETADO)**
+
+**Siguiente Paso Pendiente (Punto 2):**
+
+*   **Tarea:** Implementar el **"Efecto de Brillo Deslizante" (Shimmer Effect)**.
+*   **Descripción:** Añadir una animación de CSS que haga que un haz de luz diagonal recorra periódicamente la superficie de las tarjetas de la biblioteca. El objetivo es darles un "pulso" de vida y un toque dinámico que sea visible a primera vista, sin necesidad de interacción por parte del usuario. Esta tarea completaría el "wow factor" para las tarjetas. **(PENDIENTE)**

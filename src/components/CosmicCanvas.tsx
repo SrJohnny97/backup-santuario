@@ -71,7 +71,7 @@ const CosmicCanvas = () => {
             enable: true,
             area: 800,
           },
-          value: 120,
+          value: 160,
         },
         opacity: {
           value: { min: 0.1, max: 0.6 },
@@ -102,7 +102,7 @@ const CosmicCanvas = () => {
           options: {
             particles: {
               number: {
-                value: 60,
+                value: 80,
               },
             },
             interactivity: {
