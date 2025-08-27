@@ -175,6 +175,16 @@ Se ha iniciado el trabajo sobre los puntos de mejora detectados en la Fase 2.5, 
 3.  **Corrección de Centrado en Pantalla Final (Móvil):**
     *   **Incidente:** Se corrigió el error de centrado (Punto A.5) donde el orbe de "Ritual Completado" aparecía desplazado horizontalmente en móviles.
     *   **Resolución Técnica:** Se refactorizó el código eliminando una clase (`ritual-finished`) redundante en el componente `RitualPage.tsx`. Adicionalmente, se simplificó el CSS en `RitualPage.css`, eliminando reglas conflictivas y consolidando la lógica de centrado en la clase principal (`.santuario-container.ritual-finished`), lo que garantiza un centrado perfecto en todas las resoluciones.
+
+4.  **Optimización de Rendimiento: Migración de Media a Cloudflare R2:**
+    *   **Incidente:** Se abordaron los problemas de rendimiento más críticos de la aplicación (Puntos A.1, A.2, A.3), cuya causa raíz era servir archivos multimedia pesados (video y audio) directamente desde el repositorio de código, una práctica no optimizada para la entrega de contenido.
+    *   **Resolución Arquitectónica:** Se tomó la decisión estratégica de migrar todos los archivos multimedia a una solución de almacenamiento en la nube profesional, Cloudflare R2, que utiliza una CDN para una entrega de contenido global y de alta velocidad.
+    *   **Pasos Técnicos:**
+        *   Se estableció una nueva convención de nombres para los archivos multimedia, eliminando guiones para mayor consistencia (ej: `anclaje-de-poder.mp4` -> `anclajedepoder.mp4`).
+        *   Se actualizaron los `slugs` en `public/rituales.json` para que coincidieran con la nueva convención de nombres.
+        *   Se reemplazaron todas las rutas locales de video y audio en `public/rituales.json` con las URLs absolutas del nuevo bucket de Cloudflare R2.
+        *   Se refactorizó el componente `src/pages/RitualPage.tsx` para eliminar las rutas de audio fijas, cargando ahora dinámicamente tanto el audio de ambiente como el de notificación desde las URLs especificadas, haciendo el sistema completamente escalable.
+    *   **Resultado:** Esta migración soluciona los problemas de carga lenta y reproducción entrecortada, y establece una base robusta y profesional para añadir futuros rituales de forma eficiente.
 ---
 
 ## 8. Guía para Desarrolladores: Flujo de Trabajo con Git y Despliegue

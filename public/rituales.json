@@ -1,10 +1,10 @@
 [
   {
-    "slug": "anclaje-de-poder",
+    "slug": "anclajedepoder",
     "title": "Ritual Corporal: Anclaje del Poder",
     "description": "Un ritual diseñado para mover la energía estancada del miedo y transformarla en poder personal, llevándote de un estado de contracción a uno de expansión y confianza.",
-    "videoFondo": "/video/anclaje-poder.mp4",
-    "audioAmbiente": "/audio/anclaje-poder.mp3",
+    "videoFondo": "https://pub-7dd386e270924cc58cbf4575f4c336d0.r2.dev/anclajedepoder.mp4",
+    "audioAmbiente": "https://pub-7dd386e270924cc58cbf4575f4c336d0.r2.dev/anclajedepoder.mp3",
     "steps": [
       {
         "name": "Enraizamiento Activo",
@@ -24,11 +24,11 @@
     ]
   },
   {
-    "slug": "postura-de-receptividad",
+    "slug": "posturadelareceptividad",
     "title": "Ritual Corporal: Postura de la Receptividad",
     "description": "Un ritual para enseñarle a nuestro cuerpo el lenguaje de la abundancia, que es la apertura y la receptividad, y cultivar la sensación física de estar abierto a recibir.",
-    "videoFondo": "/video/postura-receptividad.mp4",
-    "audioAmbiente": "/audio/postura-receptividad.mp3",
+    "videoFondo": "https://pub-7dd386e270924cc58cbf4575f4c336d0.r2.dev/posturadelareceptividad.mp4",
+    "audioAmbiente": "https://pub-7dd386e270924cc58cbf4575f4c336d0.r2.dev/posturadelareceptividad.mp3",
     "steps": [
       {
         "name": "Expansión del Corazón",

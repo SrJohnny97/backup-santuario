@@ -63,8 +63,8 @@ const RitualPage = ({ rituals }: RitualPageProps) => {
       <FocusModeToggle isFocusMode={isFocusMode} onToggle={toggleFocusMode} />
       <VideoBackground videoSrc={ritual.videoFondo} />
       {/* Hidden Audio Players */}
-      <audio ref={backgroundAudioRef} src="/audio/sonidoambiente.mp3" loop preload="auto" />
-      <audio ref={notificationAudioRef} src="/audio/notificacion.mp3" preload="auto" />
+      <audio ref={backgroundAudioRef} src={ritual.audioAmbiente} loop preload="auto" />
+      <audio ref={notificationAudioRef} src="https://pub-7dd386e270924cc58cbf4575f4c336d0.r2.dev/notificacion.mp3" preload="auto" />
 
       <div className="guion-container">
         <h1>{ritual.title}</h1>
