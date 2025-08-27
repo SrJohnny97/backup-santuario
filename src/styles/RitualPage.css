@@ -167,10 +167,13 @@ h1 {
 
 .santuario-container.ritual-finished {
   display: flex;
+  grid-template-columns: none; /* Anular explícitamente la grid */
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Ocupa toda la altura de la ventana */
-  padding: 0; /* Resetea el padding para un centrado perfecto */
+  height: 100vh;
+  width: 100%; /* Asegurar que ocupe todo el ancho */
+  padding: 0;
+  gap: 0;
 }
 
 .santuario-container.ritual-finished .guion-container {
