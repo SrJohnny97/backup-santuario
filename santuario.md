@@ -138,3 +138,112 @@ Rediseño de Controles: El componente src/components/TimerControls.tsx se redise
 *   **Resolución Técnica:**
             **Transición Suave:** En src/styles/RitualPage.css, se reemplazó display: none por una transición basada en opacity y transform. Esto permite que el panel de texto se desvanezca y se deslice suavemente hacia afuera.
             **Animación Cohesiva:** Se ajustaron las curvas de aceleración (cubic-bezier) y la duración de las transiciones de todos los elementos involucrados (.santuario-container, .guion-container, .altar-container) para crear una animación armónica, fluida y visualmente atractiva, alineada con la estética premium del proyecto.
+
+---
+
+---
+
+## 7. Fase 2.5: Feedback y Puntos de Mejora (Post-Lanzamiento)
+
+Tras el despliegue en `santuario.trascendit.com`, se ha realizado una primera revisión en dispositivos móviles y se han detectado los siguientes puntos a mejorar. Esta sección servirá como bitácora para la corrección de errores y optimización de la experiencia móvil.
+
+### A. Problemas Críticos y de Experiencia de Usuario
+
+1.  **Rendimiento de Carga Inicial:** La página presenta una demora notable al cargar por primera vez en el navegador del móvil.
+2.  **Carga y Reproducción de Audio:** La música de fondo es intermitente. Aparece y desaparece, sugiriendo problemas con el búfer o la estrategia de carga en redes móviles.
+3.  **Carga y Rendimiento del Video:** El video de fondo tarda en cargar (problema también observado en PC) y presenta "stuttering" o trabas ocasionales durante la reproducción.
+4.  **Layout de Pasos del Ritual:** En la vista móvil, la descripción de cada paso del ritual pierde su formato, mostrándose desordenada y afectando la legibilidad.
+5.  **Error de Centrado en Pantalla Final:** Al completar un ritual, la esfera con el texto "Ritual Completado" no está centrada horizontalmente, apareciendo desplazada hacia la derecha.
+
+### B. Feedback y Observaciones Adicionales
+
+*   **Glitch Visual en Scroll (Prioridad Baja):** Al hacer scroll en el móvil, el video de fondo parece moverse o reajustarse con el gesto, causando un pequeño "salto" o corte visual.
+*   **Observación de Layout Móvil:** Se confirma que el layout actual en móviles es vertical: primero se muestra la lista completa de pasos del ritual y, al final de la página, se encuentra el Orbe y los controles.
+
+---
+
+## 8. Guía para Desarrolladores: Flujo de Trabajo con Git y Despliegue
+
+Esta sección documenta el flujo de trabajo técnico para gestionar el código fuente, guardar versiones y desplegar cambios en la aplicación.
+
+### A. Configuración del Proyecto
+
+*   **Tecnologías:** El proyecto está construido con **Vite, React y TypeScript**.
+*   **Control de Versiones:** El código fuente se gestiona con **Git** y está alojado en un repositorio de GitHub.
+*   **Repositorio Remoto:** `https://github.com/SrJohnny97/backup-santuario.git`
+*   **Despliegue Automático:** El proyecto está conectado a **Cloudflare Pages**. Cualquier cambio subido a la rama `main` del repositorio de GitHub iniciará un nuevo despliegue automáticamente.
+
+### B. Flujo de Trabajo Diario: Guardar y Subir Cambios
+
+Este es el proceso estándar para guardar tu trabajo y publicarlo.
+
+1.  **Revisar el estado de tus cambios:**
+    Antes de nada, es buena práctica ver qué archivos has modificado. Este comando es seguro y no cambia nada.
+    ```bash
+    git status
+    ```
+
+2.  **Preparar todos los cambios para ser guardados:**
+    Este comando añade todos los archivos modificados (excepto los ignorados por `.gitignore`, como `node_modules`) a la "zona de preparación".
+    ```bash
+    git add .
+    ```
+
+3.  **Crear un "Punto de Guardado" (Commit):**
+    Esto crea una instantánea de tus cambios con un mensaje descriptivo. **Es crucial que el mensaje sea claro** y explique qué hiciste (ej: "Se añadió el botón de pausa", "Corregido error en el temporizador").
+    ```bash
+    git commit -m "Un mensaje descriptivo de tus cambios aquí"
+    ```
+
+4.  **Subir tus cambios a GitHub:**
+    Esto envía tus "puntos de guardado" al repositorio en la nube. Este es el paso que activa el despliegue en Cloudflare.
+    ```bash
+    git push
+    ```
+
+### C. La Máquina del Tiempo: Gestionar y Recuperar Versiones
+
+Git es tu red de seguridad. Te permite volver a versiones anteriores si cometes un error.
+
+1.  **Ver el Historial de Puntos de Guardado:**
+    Para ver toda la historia de commits, usa este comando. Verás una lista de todos los cambios, quién los hizo y cuándo.
+    ```bash
+    git log --oneline
+    ```
+
+2.  **Inspeccionar una Versión Antigua (Modo Seguro):**
+    Si quieres ver cómo estaba el código en un punto anterior sin borrar nada, copia el ID del commit del `git log` y usa:
+    ```bash
+    # Reemplaza 'abcdef1' con el ID del commit que quieres ver
+    git checkout abcdef1
+    ```
+    Tus archivos cambiarán a como estaban en esa versión. Para volver al presente, ejecuta:
+    ```bash
+    git checkout main
+    ```
+
+3.  **Volver a una Versión Antigua (Borrando Cambios Recientes):**
+    **¡CUIDADO!** Este comando es poderoso. Borrará permanentemente todos los commits y cambios que hayas hecho *después* del commit que especifiques. Úsalo si estás seguro de que quieres descartar todo el trabajo reciente.
+    ```bash
+    # Reemplaza 'abcdef1' con el ID del commit al que quieres regresar
+    git reset --hard abcdef1
+    ```
+
+4.  **Revertir un Cambio Específico (Método Recomendado):**
+    Una forma más segura de deshacer un cambio es con `revert`. En lugar de borrar el historial, crea un **nuevo commit** que es el inverso del commit que quieres deshacer. Es ideal para corregir errores sin reescribir la historia.
+    ```bash
+    # Reemplaza 'abcdef1' con el ID del commit que quieres deshacer
+    git revert abcdef1
+    ```
+    Después de ejecutarlo, se abrirá un editor para que escribas un mensaje para el nuevo commit de reversión.
+
+### D. Gestión de Dependencias
+
+*   **Instalación Inicial:** Si clonas el proyecto en una nueva máquina, el primer paso es instalar todas las dependencias necesarias con:
+    ```bash
+    npm install
+    ```
+*   **Añadir una Nueva Librería:** Para añadir un nuevo paquete al proyecto, usa:
+    ```bash
+    npm install nombre-del-paquete
+    ```
