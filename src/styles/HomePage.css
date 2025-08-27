@@ -92,7 +92,7 @@
 .ritual-card:hover {
   transform: translateY(-10px) scale(1.03) rotateX(var(--rotateX, 0deg)) rotateY(var(--rotateY, 0deg));
   border-color: rgba(255, 195, 113, 0.6);
-  background-color: rgba(26, 26, 58, 0.5);
+  background-color: rgba(45, 30, 60, 0.6);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 195, 113, 0.3);
 }
 

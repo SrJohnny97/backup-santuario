@@ -23,9 +23,9 @@ const CosmicCanvas = () => {
           value: "#0a0a1a",
         },
         // Nebula effect with slightly increased vibrancy
-        image: `radial-gradient(ellipse at 70% 20%, hsla(280, 40%, 25%, 0.5) 0%, transparent 50%),
-                radial-gradient(ellipse at 30% 80%, hsla(220, 40%, 25%, 0.5) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 50%, hsla(50, 40%, 15%, 0.3) 0%, transparent 70%)`,
+        image: `radial-gradient(ellipse at 70% 20%, hsla(280, 40%, 30%, 0.6) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 80%, hsla(220, 45%, 30%, 0.6) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, hsla(50, 50%, 20%, 0.4) 0%, transparent 70%)`,
         position: "50% 50%",
         repeat: "no-repeat",
         size: "cover",
@@ -102,7 +102,7 @@ const CosmicCanvas = () => {
           options: {
             particles: {
               number: {
-                value: 80,
+                value: 160,
               },
             },
             interactivity: {
