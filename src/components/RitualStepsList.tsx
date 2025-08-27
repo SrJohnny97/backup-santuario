@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Clock } from 'lucide-react'; // Import a premium icon
 import type { RitualStep } from '../types';
 import '../styles/RitualStepsList.css';
@@ -17,9 +17,24 @@ const formatDuration = (seconds: number) => {
 };
 
 const RitualStepsList: React.FC<RitualStepsListProps> = ({ steps, currentStepName, isActive }) => {
+  const listRef = useRef<HTMLOListElement>(null);
+
+  useEffect(() => {
+    const isMobile = window.innerWidth <= 600;
+    if (isActive && isMobile && listRef.current) {
+      const activeStepElement = listRef.current.querySelector('.active-step');
+      if (activeStepElement) {
+        activeStepElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+        });
+      }
+    }
+  }, [currentStepName, isActive]);
+
   return (
     <div className="ritual-steps-container">
-      <ol className="ritual-steps-list">
+      <ol className="ritual-steps-list" ref={listRef}>
         {steps.map((step, index) => {
           const isCurrent = isActive && step.name === currentStepName;
           const stepClasses = `ritual-step-item ${isCurrent ? 'active-step' : ''}`;

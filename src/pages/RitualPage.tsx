@@ -78,7 +78,7 @@ const RitualPage = ({ rituals }: RitualPageProps) => {
 
         
       </div>
-      <div className={`altar-container ${isFinished ? 'ritual-finished' : ''}`}>
+      <div className="altar-container">
         <Orbe 
           formattedTime={formattedTime}
           stepName={stepName}

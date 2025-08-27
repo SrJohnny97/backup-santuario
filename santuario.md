@@ -160,6 +160,21 @@ Tras el despliegue en `santuario.trascendit.com`, se ha realizado una primera re
 *   **Glitch Visual en Scroll (Prioridad Baja):** Al hacer scroll en el móvil, el video de fondo parece moverse o reajustarse con el gesto, causando un pequeño "salto" o corte visual.
 *   **Observación de Layout Móvil:** Se confirma que el layout actual en móviles es vertical: primero se muestra la lista completa de pasos del ritual y, al final de la página, se encuentra el Orbe y los controles.
 
+### C. Implementación de Correcciones y Mejoras (Fase 2.5)
+
+Se ha iniciado el trabajo sobre los puntos de mejora detectados en la Fase 2.5, con los siguientes avances:
+
+1.  **Corrección del Layout de Pasos del Ritual (Móvil):**
+    *   **Incidente:** Se solucionó el problema (Punto A.4) donde la descripción de los pasos del ritual se mostraba desordenada en dispositivos móviles.
+    *   **Resolución Técnica:** Se aplicaron estilos responsivos (`@media (max-width: 600px)`) en `RitualStepsList.css`. La nueva regla permite que los elementos del encabezado (`step-header`) se reorganicen verticalmente (`flex-wrap: wrap`) y elimina el `padding-left` fijo de la instrucción, asegurando una visualización clara y apilada en pantallas estrechas.
+
+2.  **Mejora de UX: Auto-Scroll al Paso Activo (Móvil):**
+    *   **Implementación:** Se añadió una nueva funcionalidad en `RitualStepsList.tsx` que mejora la experiencia en móviles.
+    *   **Resolución Técnica:** Utilizando los hooks `useEffect` y `useRef` de React, la aplicación ahora desplaza automáticamente la vista (`scrollIntoView`) para centrar en la pantalla el paso del ritual que se encuentra activo. Esto evita que el usuario tenga que buscarlo manualmente.
+
+3.  **Corrección de Centrado en Pantalla Final (Móvil):**
+    *   **Incidente:** Se corrigió el error de centrado (Punto A.5) donde el orbe de "Ritual Completado" aparecía desplazado horizontalmente en móviles.
+    *   **Resolución Técnica:** Se refactorizó el código eliminando una clase (`ritual-finished`) redundante en el componente `RitualPage.tsx`. Adicionalmente, se simplificó el CSS en `RitualPage.css`, eliminando reglas conflictivas y consolidando la lógica de centrado en la clase principal (`.santuario-container.ritual-finished`), lo que garantiza un centrado perfecto en todas las resoluciones.
 ---
 
 ## 8. Guía para Desarrolladores: Flujo de Trabajo con Git y Despliegue
