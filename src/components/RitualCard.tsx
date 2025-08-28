@@ -56,7 +56,7 @@ const RitualCard = ({ ritual, isFeatured }: RitualCardProps) => {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      <h3 class="ritual-card-title">{ritual.title}</h3>
+      <h3 className="ritual-card-title">{ritual.title}</h3>
       <p className="ritual-card-description">{ritual.description}</p>
     </Link>
   );
