@@ -395,17 +395,30 @@ La solución final y correcta fue:
 *   **Resultado:** Las tarjetas ahora se inclinan y giran siguiendo el movimiento del ratón, creando una experiencia táctil y visualmente atractiva que eleva la calidad percibida de la interfaz.### Implementación (Iteración 3): Ajuste de Visibilidad y Claridad
 
 *   **Objetivo:** Mejorar la legibilidad y el impacto visual de las tarjetas de rituales en la biblioteca, especialmente en dispositivos móviles donde el borde era poco visible.
-*   **Estado:** **(Parcialmente Completado)**
+*   **Estado:** **(COMPLETADO)**
 
 **Pasos Técnicos:**
 
-1.  **Análisis y Diagnóstico:** Se detectó que el borde de las tarjetas de la biblioteca (`ritual-card`) era demasiado sutil (`1px` y muy transparente), causando que se confundiera con el fondo de la página. Múltiples intentos de implementar un borde animado con técnicas avanzadas de CSS (`@property`, `conic-gradient`) fallaron, indicando posibles problemas de compatibilidad o especificidad.
-2.  **Resolución (Punto 1 - Borde):** Tras un proceso de depuración, se optó por la solución más robusta y directa:
-    *   Se modificó la regla de CSS para `.ritual-card` en `src/styles/HomePage.css`.
-    *   Se aumentó el grosor del borde a `2px` y su opacidad a `0.5` (`rgba(255, 195, 113, 0.5)`).
-    *   Este cambio simple y efectivo asegura que el borde sea claramente visible en todos los dispositivos sin introducir animaciones complejas. **(COMPLETADO)**
+1.  **Resolución de Visibilidad del Borde:**
+    *   **Diagnóstico:** Se detectó que el borde de las tarjetas de la biblioteca (`ritual-card`) era demasiado sutil (`1px` y muy transparente), confundíendose con el fondo.
+    *   **Solución:** Se modificó `src/styles/HomePage.css`, aumentando el grosor del borde a `2px` y su opacidad a `0.5` (`rgba(255, 195, 113, 0.5)`), asegurando su visibilidad en todos los dispositivos. **(COMPLETADO)**
 
-**Siguiente Paso Pendiente (Punto 2):**
+2.  **Implementación del "Efecto de Brillo Deslizante" (Shimmer Effect):**
+    *   **Objetivo:** Añadir un "pulso" de vida a las tarjetas para un mayor "wow factor".
+    *   **Implementación Inicial:** Se creó una animación CSS con un pseudo-elemento (`::before`) que genera un haz de luz diagonal y lo anima para que recorra la superficie de la tarjeta periódicamente.
+    *   **Decisión Estratégica (Feedback de Usuario):** Se determinó que el efecto, aunque visualmente atractivo, era demasiado llamativo para estar presente en todas las tarjetas de la biblioteca. Podría distraer al usuario en lugar de guiarlo.
+    *   **Solución Final:** Se decidió aplicar el "Shimmer Effect" **únicamente a la tarjeta principal (Ritual de la Semana)** para darle máxima jerarquía y enfoque, y se eliminó de las tarjetas secundarias de la biblioteca. Esto concentra la atención del usuario en el ritual destacado. **(COMPLETADO)**
 
-*   **Tarea:** Implementar el **"Efecto de Brillo Deslizante" (Shimmer Effect)**.
-*   **Descripción:** Añadir una animación de CSS que haga que un haz de luz diagonal recorra periódicamente la superficie de las tarjetas de la biblioteca. El objetivo es darles un "pulso" de vida y un toque dinámico que sea visible a primera vista, sin necesidad de interacción por parte del usuario. Esta tarea completaría el "wow factor" para las tarjetas. **(PENDIENTE)**
+---
+
+## 12. Corrección de Incidente Crítico: Fallo de Despliegue en Cloudflare
+
+*   **Estado:** **(SOLUCIONADO)**
+*   **Incidente:** Tras subir los últimos cambios a GitHub, el despliegue automático en Cloudflare Pages fallaba consistentemente, impidiendo que las actualizaciones se vieran en producción.
+*   **Análisis del Error (Log de Cloudflare):** El registro de build mostraba un error de TypeScript: `error TS2322: Type '{ children: string; class: string; }' is not assignable to type 'DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>'. Property 'class' does not exist... Did you mean 'className'?`.
+*   **Causa Raíz:** En el componente `src/components/RitualCard.tsx`, se utilizó el atributo `class` de HTML en lugar del atributo `className` de JSX (React) para asignar una clase a un elemento `<h2>`. Aunque esto puede funcionar en desarrollo gracias a la flexibilidad de Vite, el proceso de build de producción de TypeScript es mucho más estricto y lo identifica correctamente como un error, deteniendo el despliegie.
+*   **Resolución:**
+    1.  Se identificó la línea del error en `src/components/RitualCard.tsx`.
+    2.  Se reemplazó `class="ritual-card-title"` por `className="ritual-card-title"`.
+    3.  Se realizaron los pasos del flujo de Git (`add`, `commit`, `push`) para subir la corrección al repositorio.
+*   **Lección Aprendida:** Es fundamental adherirse estrictamente a la sintaxis de JSX (`className`) en lugar de HTML (`class`) en los componentes de React para asegurar la compatibilidad con los procesos de build y evitar fallos de despliegue.
