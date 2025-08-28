@@ -42,9 +42,9 @@ const RitualCard = ({ ritual, isFeatured }: RitualCardProps) => {
   const cardStyle = {
     background: `
       radial-gradient(ellipse at 10% 20%, rgba(255, 215, 0, 0.05) 0%, transparent 40%),
-      radial-gradient(ellipse at 90% 80%, rgba(255, 195, 113, 0.05) 0%, transparent 50%),
-      #121218
-    `
+      radial-gradient(ellipse at 90% 80%, rgba(255, 195, 113, 0.05) 0%, transparent 50%)
+    `,
+    backgroundColor: 'rgba(18, 18, 24, 0.7)'
   };
 
   return (

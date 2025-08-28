@@ -75,6 +75,8 @@
 
 /* --- Frosted Glass Cards (Base and Grid) --- */
 .ritual-card {
+  position: relative; /* Needed for the pseudo-element positioning */
+  overflow: hidden;   /* Hides the shimmer effect outside the card boundaries */
   /* El fondo se controla con un estilo en línea en RitualCard.tsx para evitar problemas de caché de Vite */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -125,6 +127,31 @@
 
 .featured-ritual-card .ritual-card-description {
   font-size: 1.1rem;
+}
+
+/* --- Shimmer Effect for Featured Card --- */
+@keyframes shimmerEffect {
+  100% {
+    left: 150%;
+  }
+}
+
+.featured-ritual-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 75%;
+  height: 100%;
+  transform: skewX(-25deg);
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shimmerEffect 6s infinite;
+  animation-delay: 2s;
 }
 
 /* --- Responsive --- */
