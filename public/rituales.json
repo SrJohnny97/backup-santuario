@@ -1,29 +1,5 @@
 [
   {
-    "slug": "sacudida-energetica",
-    "title": "Ritual de Sacudida Energética",
-    "description": "Libera el estrés y la tensión acumulada a través del movimiento instintivo, restaurando la calma y el equilibrio en tu sistema nervioso.",
-    "videoFondo": "https://pub-7dd386e270924cc58cbf4575f4c336d0.r2.dev/sacudidaenergetica.mp4",
-    "audioAmbiente": "https://pub-7dd386e270924cc58cbf4575f4c336d0.r2.dev/sacudidaenergetica.mp3",
-    "steps": [
-      {
-        "name": "Intención",
-        "duration": 60,
-        "instruction": "De pie, cierra los ojos. Decide qué emoción o tensión quieres soltar hoy (ej: \"la frustración del trabajo\", \"el peso de una preocupación\", \"la ansiedad acumulada\"). Nómbrala en tu mente."
-      },
-      {
-        "name": "La Sacudida",
-        "duration": 300,
-        "instruction": "Empieza a sacudir suavemente tus manos y pies. Deja que la sacudida suba por tus brazos y piernas. Involucra tus caderas, hombros, torso, incluso tu mandíbula. No lo fuerces, deja que el cuerpo se mueva como necesite. Puedes saltar suavemente. La clave es soltar el control."
-      },
-      {
-        "name": "Integración",
-        "duration": 120,
-        "instruction": "Detente de golpe. Quédate de pie, con los ojos cerrados. Siente el hormigueo, el calor, el espacio que has creado. Respira profundo y siente la calma que sigue a la liberación. Acabas de limpiar tu campo energético."
-      }
-    ]
-  },
-  {
     "slug": "posturadelareceptividad",
     "title": "Ritual Corporal: Postura de la Receptividad",
     "description": "Un ritual para enseñarle a nuestro cuerpo el lenguaje de la abundancia, que es la apertura y la receptividad, y cultivar la sensación física de estar abierto a recibir.",
@@ -68,6 +44,30 @@
         "name": "Postura de Poder",
         "duration": 300,
         "instruction": "Separa las piernas al ancho de los hombros, pon las manos en las caderas, saca el pecho y levanta ligeramente la barbilla. Respira profundo y siente cómo el espacio que ocupas se expande."
+      }
+    ]
+  },
+  {
+    "slug": "sacudida-energetica",
+    "title": "Ritual de Sacudida Energética",
+    "description": "Libera el estrés y la tensión acumulada a través del movimiento instintivo, restaurando la calma y el equilibrio en tu sistema nervioso.",
+    "videoFondo": "https://pub-7dd386e270924cc58cbf4575f4c336d0.r2.dev/sacudidaenergetica.mp4",
+    "audioAmbiente": "https://pub-7dd386e270924cc58cbf4575f4c336d0.r2.dev/sacudidaenergetica.mp3",
+    "steps": [
+      {
+        "name": "Intención",
+        "duration": 60,
+        "instruction": "De pie, cierra los ojos. Decide qué emoción o tensión quieres soltar hoy (ej: \"la frustración del trabajo\", \"el peso de una preocupación\", \"la ansiedad acumulada\"). Nómbrala en tu mente."
+      },
+      {
+        "name": "La Sacudida",
+        "duration": 300,
+        "instruction": "Empieza a sacudir suavemente tus manos y pies. Deja que la sacudida suba por tus brazos y piernas. Involucra tus caderas, hombros, torso, incluso tu mandíbula. No lo fuerces, deja que el cuerpo se mueva como necesite. Puedes saltar suavemente. La clave es soltar el control."
+      },
+      {
+        "name": "Integración",
+        "duration": 120,
+        "instruction": "Detente de golpe. Quédate de pie, con los ojos cerrados. Siente el hormigueo, el calor, el espacio que has creado. Respira profundo y siente la calma que sigue a la liberación. Acabas de limpiar tu campo energético."
       }
     ]
   }
