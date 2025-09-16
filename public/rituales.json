@@ -70,5 +70,29 @@
         "instruction": "Detente de golpe. Quédate de pie, con los ojos cerrados. Siente el hormigueo, el calor, el espacio que has creado. Respira profundo y siente la calma que sigue a la liberación. Acabas de limpiar tu campo energético."
       }
     ]
+  },
+  {
+    "slug": "limpieza-energetica",
+    "title": "Ritual de Limpieza Energética",
+    "description": "Una ducha energética para purificar tu aura, eliminar energías densas y restaurar tu frecuencia natural y tu claridad.",
+    "videoFondo": "https://pub-7dd386e270924cc58cbf4575f4c336d0.r2.dev/limpieza-energetica.mp4",
+    "audioAmbiente": "https://pub-7dd386e270924cc58cbf4575f4c336d0.r2.dev/limpieza-energetica.mp3",
+    "steps": [
+      {
+        "name": "Enraizamiento",
+        "duration": 120,
+        "instruction": "De pie, cierra los ojos. Imagina raíces de luz que salen de tus pies y se anclan profundo en el centro de la Tierra. Siente tu energía como una columna de luz."
+      },
+      {
+        "name": "Barrido Energético",
+        "duration": 240,
+        "instruction": "Usa tus manos para 'barrer' tu campo energético de la cabeza a los pies, sin tocarte. Visualiza que quitas cualquier energía densa y sacude las manos para soltarla."
+      },
+      {
+        "name": "Sellado con Luz",
+        "duration": 120,
+        "instruction": "Crea una burbuja de luz dorada a tu alrededor, desde arriba hacia abajo, usando tus manos. Siente cómo sella y protege tu campo energético."
+      }
+    ]
   }
 ]
