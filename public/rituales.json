@@ -94,5 +94,29 @@
         "instruction": "Crea una burbuja de luz dorada a tu alrededor, desde arriba hacia abajo, usando tus manos. Siente cómo sella y protege tu campo energético."
       }
     ]
+  },
+  {
+    "slug": "postura-del-arquitecto",
+    "title": "Ritual de Visualización: La Postura del Arquitecto",
+    "description": "Un ritual para traducir los planos de tu futuro visualizado al lenguaje del cuerpo, anclando la certeza de tu éxito directamente en tus células.",
+    "videoFondo": "https://pub-7dd386e270924cc58cbf4575f4c336d0.r2.dev/postura-del-arquitecto.mp4",
+    "audioAmbiente": "https://pub-7dd386e270924cc58cbf4575f4c336d0.r2.dev/postura-del-arquitecto.mp3",
+    "steps": [
+      {
+        "name": "Calibración Somática",
+        "duration": 180,
+        "instruction": "Antes de construir, un buen arquitecto estudia el terreno. Cierra los ojos y siéntate o ponte de pie con la espalda recta. Realiza un escáner lento y consciente de tu cuerpo, desde los pies hasta la cabeza. No intentes cambiar nada, solo nota. ¿Dónde hay tensión? ¿Dónde hay ligereza? ¿Qué postura natural adopta tu cuerpo cuando no piensas en ello? Sé brutalmente honesto. Este es tu 'estado base' actual. Reconócelo sin juicio."
+      },
+      {
+        "name": "El Anclaje del Arquitecto",
+        "duration": 300,
+        "instruction": "Ahora, comienza a construir en tu mente la imagen de esa realidad futura, el 'plano' que le quieres dar a tu cerebro. Una vez tengas esa visión, pregúntate: si esa realidad ya fuera tu presente, ¿cómo se movería tu cuerpo? ¿Cómo respirarías? ¿Cómo sería tu postura? No lo pienses, siéntelo. Experimenta. Quizás tus hombros se relajan y van hacia atrás, quizás tu pecho se abre ligeramente. Encuentra una postura física sutil pero clara que encapsule la sensación de 'ya está hecho'. Esta es la 'Postura del Arquitecto'. Sostenla durante varios ciclos de respiración profunda."
+      },
+      {
+        "name": "El Sello Neuronal",
+        "duration": 120,
+        "instruction": "Con la 'Postura del Arquitecto' aún activa, vas a sellarla. Intensifica ligeramente la postura, solo un 10% más. Mientras lo haces, inhala profundamente y piensa o susurra la frase: 'Mi cuerpo conoce el camino'. Al exhalar, relaja la intensidad pero mantén la esencia de la postura. Has creado un anclaje somático. Durante el día, úsalo como un atajo para realinear tu neurología con los planos que has diseñado."
+      }
+    ]
   }
 ]
