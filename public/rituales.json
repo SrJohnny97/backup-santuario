@@ -142,5 +142,29 @@
         "instruction": "Siente los dos caminos en tu brazo. El viejo y el nuevo. Durante el día, cuando sientas la señal del viejo hábito, toca la nueva línea. Usa este anclaje físico como un recordatorio instantáneo para elegir la nueva autopista."
       }
     ]
+  },
+  {
+    "slug": "venciendo-la-procrastinación",
+    "title": "Ritual Corporal: Venciendo a la Procrastinación",
+    "description": "Un ritual corporal diseñado para hackear la respuesta de amenaza de tu sistema nervioso frente a una tarea. Aprenderás a llevar a tu cuerpo de un estado de 'congelamiento' (resistencia) a un estado de 'activación' segura, generando la energía física y mental necesaria para dar el primer paso y romper la inercia de la procrastinación.",
+    "videoFondo": "https://pub-7dd386e270924cc58cbf4575f4c336d0.r2.dev/venciendoalaprocrastinacion.mp4",
+    "audioAmbiente": "https://pub-7dd386e270924cc58cbf4575f4c336d0.r2.dev/venciendoalaprocrastinacion.mp3",
+    "steps": [
+      {
+        "name": "Paso 1: La Sombra de la Tarea",
+        "duration": 180,
+        "instruction": "Cierra los ojos. Trae a tu mente una tarea específica que has estado posponiendo. No pienses en hacerla, solo obsérvala como si fuera un objeto frente a ti. Siente la resistencia que genera en tu cuerpo. ¿Es un peso en el pecho? ¿Un vacío en el estómago? ¿Una niebla en tu mente? Localiza esa 'sombra' y simplemente reconócela sin juicio. Dale permiso para estar ahí."
+      },
+      {
+        "name": "Paso 2: El Doble Suspiro Alquímico",
+        "duration": 120,
+        "instruction": "Ahora, vamos a resetear tu sistema nervioso. Realiza un 'Doble Suspiro': Inhala dos veces seguidas y de forma corta por la nariz (una inhalación principal y otra pequeña justo después para inflar los pulmones al máximo). Luego, exhala todo el aire, lenta y prolongadamente, por la boca. Haz esto tres veces. Este suspiro le comunica a tu cerebro, a un nivel profundo, que el peligro ha pasado y es seguro proceder."
+      },
+      {
+        "name": "Paso 3: El Gesto de Ignición",
+        "duration": 120,
+        "instruction": "De pie, con las piernas firmes en el suelo. Aprieta tus puños con fuerza durante 5 segundos, acumulando la energía de la intención. Luego, al exhalar, abre las manos de golpe y sacúdelas vigorosamente mientras dices en voz alta: 'El primer impulso es ahora'. Siente la energía liberada en tus manos y brazos. Has creado la chispa. Usa este impulso físico para caminar directamente hacia tu tarea y tocarla, abrirla o simplemente mirarla durante 1 minuto, sellando el ritual."
+      }
+    ]
   }
 ]
