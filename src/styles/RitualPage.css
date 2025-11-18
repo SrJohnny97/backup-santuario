@@ -1,13 +1,13 @@
 /* --- Layout --- */
 .santuario-container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto; /* Center horizontally */
   min-height: 100vh; /* Take full viewport height */
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
   gap: 4rem;
-  align-items: center; /* Vertically center grid items */
+  align-items: start; /* Vertically align grid items to the top */
   padding: 2rem;
   transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
@@ -21,13 +21,25 @@
   transform: translateX(0);
 }
 
+.altar-sticky-wrapper {
+  position: sticky;
+  top: 0;
+  /* REMOVED height: 100vh; which caused the unnecessary scrollbar bug */
+}
+
 .altar-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1); /* Transición más suave */
+  /* It now lives inside the sticky wrapper, so it doesn't need to be sticky itself */
+  width: 100%;
+  /* REMOVED height: 100% which was causing the calculation bug */
+  /* We'll use transform to move it, which is better for performance */
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Set a default transform that JS will override. This centers it initially. */
+  transform: translateY(calc(50vh - 50%));
 }
 
 /* --- Focus Mode Active --- */

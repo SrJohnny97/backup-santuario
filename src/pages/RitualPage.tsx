@@ -21,6 +21,9 @@ const RitualPage = ({ rituals }: RitualPageProps) => {
   const [isFocusMode, setIsFocusMode] = useState(false);
   const toggleFocusMode = () => setIsFocusMode(!isFocusMode);
 
+  const guionRef = useRef<HTMLDivElement>(null);
+  const altarRef = useRef<HTMLDivElement>(null);
+
   // Add a class to the body when this page is active
   useEffect(() => {
     document.body.classList.add('ritual-page-active');
@@ -54,6 +57,67 @@ const RitualPage = ({ rituals }: RitualPageProps) => {
     notificationAudioRef: notificationAudioRef as React.RefObject<HTMLAudioElement>,
   });
 
+  // "Traveling Orb" Logic - Scroll-based implementation
+  useEffect(() => {
+    const guionEl = guionRef.current;
+    const altarEl = altarRef.current;
+
+    // Ensure the elements are mounted
+    if (!guionEl || !altarEl) {
+      return;
+    }
+
+    let animationFrameId: number;
+
+    const handleScroll = () => {
+      // Cancel any pending animation frame to avoid multiple updates in one frame
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+
+      animationFrameId = requestAnimationFrame(() => {
+        const isLongRitual = guionEl.scrollHeight > window.innerHeight;
+        const defaultTransform = 'translateY(calc(50vh - 50%))';
+
+        // When the ritual is finished, CSS flexbox handles centering. Reset transform.
+        if (isFinished) {
+          altarEl.style.transform = 'none';
+          return;
+        }
+
+        // For inactive or short rituals, use the default centered transform.
+        if (!isActive || !isLongRitual) {
+          altarEl.style.transform = defaultTransform;
+          return;
+        }
+
+        const activeStepEl = guionEl.querySelector('.active-step') as HTMLElement;
+        
+        if (activeStepEl) {
+          const stepRect = activeStepEl.getBoundingClientRect();
+          const targetY = stepRect.top + stepRect.height / 2;
+          altarEl.style.transform = `translateY(calc(${targetY}px - 50%))`;
+        } else {
+          altarEl.style.transform = defaultTransform;
+        }
+      });
+    };
+
+    // Run once to set initial position
+    handleScroll();
+
+    // Add listener for scroll events
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    // Cleanup function to remove the listener
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+    };
+  }, [currentStep, isActive, isFinished]); // Rerun this whole effect if the step changes
+
   if (!ritual) {
     return (
       <div className="ritual-not-found">
@@ -76,7 +140,7 @@ const RitualPage = ({ rituals }: RitualPageProps) => {
         <audio ref={backgroundAudioRef} src={ritual.audioAmbiente} loop preload="auto" />
         <audio ref={notificationAudioRef} src="https://pub-7dd386e270924cc58cbf4575f4c336d0.r2.dev/notificacion.mp3" preload="auto" />
 
-        <div className="guion-container">
+        <div className="guion-container" ref={guionRef}>
           <h1>{ritual.title}</h1>
           <p className="ritual-description">{ritual.description}</p>
 
@@ -88,26 +152,28 @@ const RitualPage = ({ rituals }: RitualPageProps) => {
 
           
         </div>
-        <div className="altar-container">
-          <Orbe 
-            formattedTime={formattedTime}
-            stepName={stepName}
-            isPulsing={isActive && !isPaused}
-            progress={progress}
-          />
-          <TimerControls 
-            isActive={isActive}
-            isPaused={isPaused}
-            start={start}
-            pause={pause}
-            resume={resume}
-            restart={restart}
-            skipStep={skipStep}
-          />
-          <VolumeControl 
-            volume={volume}
-            onVolumeChange={changeVolume}
-          />
+        <div className="altar-sticky-wrapper">
+          <div className="altar-container" ref={altarRef}>
+            <Orbe 
+              formattedTime={formattedTime}
+              stepName={stepName}
+              isPulsing={isActive && !isPaused}
+              progress={progress}
+            />
+            <TimerControls 
+              isActive={isActive}
+              isPaused={isPaused}
+              start={start}
+              pause={pause}
+              resume={resume}
+              restart={restart}
+              skipStep={skipStep}
+            />
+            <VolumeControl 
+              volume={volume}
+              onVolumeChange={changeVolume}
+            />
+          </div>
         </div>
       </div>
     </>

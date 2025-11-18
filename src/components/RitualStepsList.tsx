@@ -49,7 +49,11 @@ const RitualStepsList: React.FC<RitualStepsListProps> = ({ steps, currentStepNam
                   <span className="step-duration">{formatDuration(step.duration)}</span>
                 </div>
               </div>
-              <p className="step-instruction">{step.instruction}</p>
+              <div className="step-instruction">
+                {step.instruction.split('\n').map((line, i) => (
+                  line.trim() && <p key={i}>{line}</p>
+                ))}
+              </div>
             </li>
           );
         })}
